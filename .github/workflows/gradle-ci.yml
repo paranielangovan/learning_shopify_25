@@ -14,7 +14,7 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: '21'
 
       - name: Cache Gradle
         uses: actions/cache@v4
@@ -28,7 +28,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build
-        run: ./gradlew build
+        run: ./gradlew build --no-daemon
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
@@ -38,7 +38,7 @@ jobs:
 
       - name: Deploy
         if: github.ref == 'refs/heads/main'
-        uses: appleboy/ssh-action@v1.0.3
+        uses: appleboy/ssh-action@v1.2.0
         with:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
