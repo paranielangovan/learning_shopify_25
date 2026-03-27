@@ -1,10 +1,11 @@
-package com.example.demo.controller;
+package com.example.demo.Controller;
 
 import com.example.demo.model.Order;
 import com.example.demo.repository.OrderRepository;
 import org.springframework.web.bind.annotation.*;
-
+@CrossOrigin(origins = "*")
 @RestController
+@RequestMapping("/api/orders")
 public class TestController {
 
     private final OrderRepository orderRepository;
